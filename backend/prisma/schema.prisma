@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id              Int           @id @default(autoincrement())
+  email           String        @unique
+  password        String
+  name            String?
+  profile         Profile?
+  starredSnippets SnippetStar[]
+  snippets        Snippet[]
+  comments        Comment[]
+  forks           Fork[]
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+}
+
+model Snippet {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  title        String
+  description  String?
+  code         String
+  language     String
+  snippetStars SnippetStar[]
+  visibility   Boolean
+  author       User?         @relation(fields: [authorId], references: [id])
+  authorId     Int?
+  upvotes      Int           @default(0)
+  downvotes    Int           @default(0)
+  comments     Comment[]
+  forks        Fork[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  snippet   Snippet? @relation(fields: [snippetId], references: [id])
+  snippetId Int?
+}
+
+model SnippetStar {
+  id        Int     @id @default(autoincrement())
+  snippet   Snippet @relation(fields: [snippetId], references: [id])
+  snippetId Int
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model Fork {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  snippet   Snippet  @relation(fields: [snippetId], references: [id])
+  snippetId Int
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
