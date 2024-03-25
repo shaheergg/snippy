@@ -1,5 +1,5 @@
 import { prisma } from "../db";
-import { comparePassword } from "../lib";
+import { comparePassword, generateToken } from "../lib";
 
 export const createUser = async (req, res) => {
   const { email, password, name } = req.body;
@@ -11,9 +11,11 @@ export const createUser = async (req, res) => {
         name,
       },
     });
+    const token = generateToken(user);
+
     res.json({
       scuccess: true,
-      data: user,
+      data: { token },
       message: "User registered successfully",
       errors: null,
     });
@@ -38,7 +40,7 @@ export const signIn = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({
+      return res.status(404).json({
         success: false,
         data: null,
         message: "User not found",
@@ -49,25 +51,25 @@ export const signIn = async (req, res) => {
     const isPasswordMatch = comparePassword(password, user.password);
 
     if (!isPasswordMatch) {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         data: null,
         message: "Invalid password",
         errors: null,
       });
     }
-
+    const token = generateToken(user);
     res.json({
       success: true,
-      data: user,
+      data: { token },
       message: "User logged in successfully",
       errors: null,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
       data: null,
-      message: "Failed to login",
+      message: "An unexpected error occurred",
       errors: error,
     });
   }
@@ -84,11 +86,11 @@ export const getUser = async (req, res) => {
     res.json({
       success: true,
       data: user,
-      message: "User found",
+      message: "User fetched successfully",
       errors: null,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
       data: null,
       message: "Failed to get user",

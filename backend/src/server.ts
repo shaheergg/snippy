@@ -1,5 +1,5 @@
 import express from "express";
-import { router } from "./router";
+import router from "./router";
 import cors from "cors";
 import morgran from "morgan";
 import { protect } from "./middlewares/auth";
@@ -19,7 +19,7 @@ app.post(
   "/signin",
   body("email").isEmail(),
   body("password").isString(),
-  body("name").isString(),
+  body("name").isString().optional(),
   handleInputError,
   signIn
 );
@@ -27,7 +27,6 @@ app.post(
   "/register",
   body("email").isEmail(),
   body("password").isString(),
-  body("name").isString(),
   handleInputError,
   createUser
 );

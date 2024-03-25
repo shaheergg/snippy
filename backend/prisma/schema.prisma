@@ -17,6 +17,7 @@ model User {
   snippets        Snippet[]
   comments        Comment[]
   forks           Fork[]
+  links           Link[]
 }
 
 model Profile {
@@ -26,13 +27,21 @@ model Profile {
   userId Int     @unique
 }
 
+model Link {
+  id     Int    @id @default(autoincrement())
+  name   String // supported: GitHub, LinkedIn, Twitter.
+  url    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int    @unique
+}
+
 model Snippet {
   id           Int           @id @default(autoincrement())
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   title        String
   description  String?
-  code         String
+  code         String?
   language     String
   snippetStars SnippetStar[]
   visibility   Boolean

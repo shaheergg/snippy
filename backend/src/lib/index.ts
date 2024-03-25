@@ -7,7 +7,7 @@ export const hashPassword = (password: string) => {
 };
 
 export const comparePassword = (password: string, hash: string) => {
-  return bcrypt.compareSync(password, hash);
+  return bcrypt.compare(password, hash);
 };
 
 export const generateToken = (user: any) => {
@@ -18,4 +18,5 @@ export const generateToken = (user: any) => {
       expiresIn: "5d",
     }
   );
+  return token;
 };
