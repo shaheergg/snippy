@@ -1,10 +1,27 @@
 import { useState } from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Public from "./routes/Public";
+import Private from "./routes/Private";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import RootLayout from "./layouts/RootLayout";
 
 function App() {
   return (
     <>
-      <h2 className="text-4xl font-semibold">Snippy.</h2>
+      <RootLayout>
+        <Routes>
+          <Route path="/" element={<Public />}>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+          </Route>
+          <Route path="/" element={<Private />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </RootLayout>
     </>
   );
 }
