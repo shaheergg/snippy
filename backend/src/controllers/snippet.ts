@@ -14,6 +14,17 @@ export const getSnippets = async (req, res) => {
         language: true,
         createdAt: true,
         updatedAt: true,
+        snippetStars: {
+          // Include the count of stars for each snippet
+          select: {
+            id: true,
+          },
+        },
+        forks: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
 
@@ -41,6 +52,18 @@ export const getSnippet = async (req, res) => {
       where: {
         id,
         authorId,
+      },
+      include: {
+        snippetStars: {
+          select: {
+            id: true,
+          },
+        },
+        forks: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
 

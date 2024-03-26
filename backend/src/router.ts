@@ -16,6 +16,11 @@ import {
   getSnippets,
   updateSnippet,
 } from "./controllers/snippet";
+import {
+  createComment,
+  deleteComment,
+  getComments,
+} from "./controllers/comment";
 
 const router = Router();
 
@@ -58,5 +63,12 @@ router.put("/snippets/:id/visibility", changeSnippetVisibility);
 router.delete("/snippets/:id", deleteSnippet);
 
 //-- end snippet routes --
+
+// -- comment routes --
+router.get("/snippets/:snippetId/comments", getComments);
+router.post("/snippets/:snippetId/comments", createComment);
+router.delete("/comments/:commentId", deleteComment);
+
+// -- end comment routes --
 
 export default router;

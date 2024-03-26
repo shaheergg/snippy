@@ -68,6 +68,7 @@ model SnippetStar {
   id        Int     @id @default(autoincrement())
   snippet   Snippet @relation(fields: [snippetId], references: [id])
   snippetId Int
+  starred   Boolean
   user      User    @relation(fields: [userId], references: [id])
   userId    Int
 }
