@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 const AppBar = () => {
   return (
-    <div className="flex items-center justify-between p-4 border-b border-border">
+    <div className="sticky top-0 flex items-center justify-between p-4 bg-white border-b border-border">
       <div className="flex items-center gap-8">
         <Logo />
         <div className="flex items-center gap-2 p-1 rounded-full bg-neutral-100">
