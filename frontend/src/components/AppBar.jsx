@@ -9,7 +9,7 @@ const AppBar = () => {
     <div className="sticky top-0 flex items-center justify-between p-4 bg-white border-b border-border">
       <div className="flex items-center gap-8">
         <Logo />
-        <div className="flex items-center gap-2 p-1 rounded-full bg-neutral-100">
+        <div className="items-center hidden gap-2 p-1 rounded-full md:flex bg-neutral-100">
           <Link
             to="/home"
             className="flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-primary text-neutral-100"
@@ -178,9 +178,6 @@ const AppBar = () => {
             Forks
           </Link>
         </div>
-        <div>
-          <Input className="w-96" icon placeholder="Search" />
-        </div>
       </div>
       <div className="flex items-center gap-4">
         <Button className="flex items-center">
@@ -193,16 +190,38 @@ const AppBar = () => {
             fill={"none"}
           >
             <path
-              d="M18 13.5V21.5M22 17.5L14 17.5"
+              d="M11 22C10.1818 22 9.40019 21.6698 7.83693 21.0095C3.94564 19.3657 2 18.5438 2 17.1613C2 16.7742 2 10.0645 2 7M11 22L11 11.3548M11 22C11.7248 22 12.293 21.7409 13.5 21.2226M20 7V11"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M15 17.5H22M18.5 21L18.5 14"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
             <path
-              d="M7 6.5H16.75C18.8567 6.5 19.91 6.5 20.6667 7.00559C20.9943 7.22447 21.2755 7.50572 21.4944 7.83329C21.9587 8.52819 21.9963 9.68416 21.9994 11.5M12 6.5L11.3666 5.23313C10.8418 4.18358 10.3622 3.12712 9.19926 2.69101C8.6899 2.5 8.10802 2.5 6.94427 2.5C5.1278 2.5 4.21956 2.5 3.53806 2.88032C3.05227 3.15142 2.65142 3.55227 2.38032 4.03806C2 4.71956 2 5.6278 2 7.44427V10.5C2 15.214 2 17.5711 3.46447 19.0355C4.8215 20.3926 6.94493 20.4921 11 20.4994"
+              d="M7.32592 9.69138L4.40472 8.27785C2.80157 7.5021 2 7.11423 2 6.5C2 5.88577 2.80157 5.4979 4.40472 4.72215L7.32592 3.30862C9.12883 2.43621 10.0303 2 11 2C11.9697 2 12.8712 2.4362 14.6741 3.30862L17.5953 4.72215C19.1984 5.4979 20 5.88577 20 6.5C20 7.11423 19.1984 7.5021 17.5953 8.27785L14.6741 9.69138C12.8712 10.5638 11.9697 11 11 11C10.0303 11 9.12883 10.5638 7.32592 9.69138Z"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M5 12L7 13"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M16 4L6 9"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <span className="ml-2">Create Snippet</span>

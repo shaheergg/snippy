@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LangIndicator from "./LangIndicator";
 
@@ -76,8 +76,8 @@ const SnippetCard = () => {
             <span className="pt-1 text-xs font-semibold">56.2k</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600 font-grotesk">
-            <LangIndicator language={"python"} />
-            <span className="pt-1 text-xs font-semibold">Python</span>
+            <LangIndicator language={"cpp"} />
+            <span className="text-xs font-semibold ">ruby</span>
           </div>
         </div>
       </div>
