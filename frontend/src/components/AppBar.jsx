@@ -1,10 +1,28 @@
 import React from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
-import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import AppDropdown from "./AppDropdown";
+import { formatNumber } from "@/lib/utils";
 
 const AppBar = () => {
+  const items = [
+    {
+      id: 1,
+      label: "Profile",
+      to: "/profile",
+    },
+    {
+      id: 2,
+      label: "Settings",
+      to: "/settings",
+    },
+    {
+      id: 3,
+      label: "Logout",
+      to: "/logout",
+    },
+  ];
   return (
     <div className="sticky top-0 flex items-center justify-between p-4 bg-white border-b border-border">
       <div className="flex items-center gap-8">
@@ -243,10 +261,18 @@ const AppBar = () => {
               strokeLinejoin="round"
             />
           </svg>
-          <span>0</span>
+          <span className="font-semibold font-grotesk">
+            {formatNumber(1235)}
+          </span>
         </span>
         <div className="p-2">
-          <div className="bg-gray-200 rounded-full h-9 w-9"></div>
+          <AppDropdown items={items} label="My Account">
+            <img
+              src="https://api.dicebear.com/8.x/lorelei/svg"
+              className="w-8 h-8 bg-black rounded-full"
+              alt="avatar"
+            />
+          </AppDropdown>
         </div>
       </div>
     </div>

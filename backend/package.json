@@ -12,8 +12,11 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",
+    "hackerearth-node": "^2.3.9",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
+    "piston-client": "^1.0.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

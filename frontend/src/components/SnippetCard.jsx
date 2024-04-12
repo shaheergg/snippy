@@ -77,7 +77,7 @@ const SnippetCard = () => {
           </div>
           <div className="flex items-center gap-2 text-gray-600 font-grotesk">
             <LangIndicator language={"cpp"} />
-            <span className="text-xs font-semibold ">ruby</span>
+            <span className="text-xs font-semibold ">Ruby</span>
           </div>
         </div>
       </div>

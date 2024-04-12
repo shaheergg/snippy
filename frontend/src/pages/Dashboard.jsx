@@ -11,6 +11,7 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 import DayIndicator from "@/components/DayIndicator";
+import EmptyState from "@/components/EmptyState";
 const Dashboard = () => {
   const logout = useAuthStore((state) => state.logout);
   const days = [
@@ -29,9 +30,19 @@ const Dashboard = () => {
           <div className="col-span-1 md:col-span-4">
             <div className="flex items-center justify-between px-2 py-4">
               <h2 className="text-2xl font-semibold font-grotesk">
-                Recent Snippets
+                My Snippets
               </h2>
-              <Button variant="ghost">
+            </div>
+            <div className="px-2 py-4 space-y-2 bg-white border divide-y rounded-md border-border divide-border">
+              <SnippetCard />
+              <SnippetCard />
+
+              <SnippetCard />
+              <SnippetCard />
+              {/* <EmptyState /> */}
+            </div>
+            <div className="py-4">
+              <Button variant="outline" className="w-full">
                 <Link to="/dashboard">
                   <span className="pt-1 pr-2 text-sm"> View All</span>
                   <svg
@@ -53,12 +64,6 @@ const Dashboard = () => {
                   </svg>
                 </Link>
               </Button>
-            </div>
-            <div className="px-2 py-4 space-y-2 bg-white divide-y rounded-md divide-border border-border">
-              <SnippetCard />
-              <SnippetCard />
-              <SnippetCard />
-              <SnippetCard />
             </div>
           </div>
           <div className="col-span-1 space-y-4 md:col-span-2">
@@ -124,7 +129,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="py-2">
-                {/* <h2 className="text-lg font-semibold font-grotesk">Bio:-</h2> */}
+                <h2 className="text-lg font-semibold font-grotesk">Bio:-</h2>
                 <p className="text-sm text-foreground font-grotesk">
                   🚀 Code maestro sculpting digital dreams with elegance and
                   precision. From pixels to algorithms, I turn ideas into
@@ -385,37 +390,6 @@ const Dashboard = () => {
                   </a>
                 </div>
               </div>
-            </div>
-            <div className="flex items-center justify-between gap-2 px-1 py-2 rounded-md ">
-              <Button className="w-full" variant="outline">
-                <Link to="/">
-                  <span className="pr-2">View All Activities</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width={20}
-                    height={20}
-                    color={"#000000"}
-                    fill={"none"}
-                    className="inline-flex"
-                  >
-                    <path
-                      d="M20 12L4 12"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M15 17C15 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </Button>
             </div>
           </div>
         </div>

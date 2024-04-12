@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import RootLayout from "./layouts/RootLayout";
+import Snippet from "./pages/Snippet";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Route>
           <Route path="/" element={<Private />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/snippet/:id" element={<Snippet />} />
           </Route>
         </Routes>
       </RootLayout>
