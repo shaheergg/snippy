@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const AppDropdown = ({ children, label, items }) => {
   return (
@@ -16,7 +17,18 @@ const AppDropdown = ({ children, label, items }) => {
         <DropdownMenuLabel>{label}</DropdownMenuLabel>
         {items.map((item) => (
           <DropdownMenuItem key={item.id} onClick={item.onClick}>
-            <Link to={item.to}>{item.label}</Link>
+            {item.type === "link" ? (
+              <Link to={item.to}>{item.label}</Link>
+            ) : (
+              <Button
+                onClick={item.action}
+                className=""
+                size="medium"
+                variant="ghost"
+              >
+                {item.label}
+              </Button>
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { useAuthStore } from "@/store/auth";
 import AppLayout from "@/layouts/AppLayout";
 import { Link } from "react-router-dom";
 import SnippetCard from "@/components/SnippetCard";
@@ -12,8 +11,8 @@ import {
 } from "@/components/ui/tooltip";
 import DayIndicator from "@/components/DayIndicator";
 import EmptyState from "@/components/EmptyState";
+import Loading from "@/components/Loading";
 const Dashboard = () => {
-  const logout = useAuthStore((state) => state.logout);
   const days = [
     "Monday",
     "Tuesday",
@@ -39,7 +38,11 @@ const Dashboard = () => {
 
               <SnippetCard />
               <SnippetCard />
-              {/* <EmptyState /> */}
+              {/* <EmptyState
+                text={"Oops! There are no snippets to show."}
+                buttonText={"Create Snippet"}
+              /> */}
+              {/* <Loading /> */}
             </div>
             <div className="py-4">
               <Button variant="outline" className="w-full">

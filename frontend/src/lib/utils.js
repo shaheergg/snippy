@@ -18,3 +18,10 @@ export const formatNumber = (number) => {
   }
   return number;
 };
+
+export const capitalize = (text) => {
+  if (text.length === 0) {
+    return text;
+  }
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};

@@ -16,6 +16,12 @@ export const getComments = async (req, res) => {
         },
       },
     });
+    res.json({
+      success: true,
+      data: comments,
+      message: "Comments fetched successfully",
+      errors: null,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
