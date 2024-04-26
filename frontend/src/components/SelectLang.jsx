@@ -6,20 +6,22 @@ import {
   SelectTrigger,
   SelectItem,
 } from "./ui/select";
-import { PROGRAMMING_LANGUAGES } from "@/constants";
 import { capitalize } from "@/lib/utils";
-const SelectLang = ({ value }) => {
-  const [selected, setSelected] = useState(PROGRAMMING_LANGUAGES[0]);
+const SelectLang = ({ runtimes, selected, setSelected }) => {
   return (
-    <Select className="">
+    <Select
+      onValueChange={(value) => {
+        setSelected(value);
+      }}
+    >
       <SelectTrigger className="w-[100%]">
-        <SelectValue placeholder={capitalize(selected)} />
+        <SelectValue placeholder={capitalize(String(selected))} />
       </SelectTrigger>
       <SelectContent className="">
-        {PROGRAMMING_LANGUAGES.map((lang) => {
+        {runtimes.map((runtime) => {
           return (
-            <SelectItem key={lang} value={lang}>
-              {capitalize(lang)}
+            <SelectItem key={runtime.id} value={runtime.language}>
+              {capitalize(String(runtime.language))}
             </SelectItem>
           );
         })}
